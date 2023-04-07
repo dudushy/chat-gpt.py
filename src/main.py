@@ -16,17 +16,29 @@ openai.api_key = os.getenv("API_KEY") #? Set OpenAI API key
 def clearConsole() -> None: #? Clear console
     os.system("cls" if os.name == "nt" else "clear")
 
-def main() -> None:
-    # print(openai.Model.list())
-    completion = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[{
-            "role": "user",
-            "content": "Hello!"
-        }]
-    )
+def chat() -> None:
+    print("[@] Welcome, Ask me anything! Type '/exit' to quit.")
 
-    print(completion.choices[0].message.content)
+    while True:
+        message = input("\n[@] You: ")
+
+        if message.lower() == "/exit":
+            print("\n[@] Exiting...")
+            break
+
+        completion = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[{
+                "role": "user",
+                "content": message
+            }]
+        )
+
+        print(f"\n[@] ChatGPT: {completion.choices[0].message.content}")
+
+def main() -> None:
+    clearConsole()
+    chat()
 
 #! Main
 if __name__ == "__main__":
