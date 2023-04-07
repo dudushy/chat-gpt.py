@@ -1,2 +1,2 @@
-# [template-python](https://github.com/dudushy/template-python/)
-Template for Python projects.
+# [chat-gpt.py](https://github.com/dudushy/chat-gpt.py/)
+Python with ChatGPT.
